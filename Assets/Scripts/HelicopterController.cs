@@ -12,14 +12,9 @@ public class HelicopterController : MonoBehaviour
 
     void Update()
     {
-        // Get input
-        float moveX = 0f;
-        float moveZ = 0f;
-
-        if (Input.GetKey(KeyCode.W)) moveZ += 1f;
-        if (Input.GetKey(KeyCode.S)) moveZ -= 1f;
-        if (Input.GetKey(KeyCode.D)) moveX += 1f;
-        if (Input.GetKey(KeyCode.A)) moveX -= 1f;
+        // Input for either keyboard or controller
+        float moveX = Input.GetAxis("Horizontal");
+        float moveZ = Input.GetAxis("Vertical");
 
         inputDirection = new Vector3(moveX, 0f, moveZ).normalized;
 
@@ -31,7 +26,7 @@ public class HelicopterController : MonoBehaviour
         }
         else
         {
-            // Apply friction when no input
+            // Friction
             velocity = Vector3.MoveTowards(velocity, Vector3.zero, friction * Time.deltaTime);
         }
 
@@ -50,11 +45,6 @@ public class HelicopterController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Hit: " + collision.gameObject.name);
-
-        // Optional: Stop movement on collision
-        //velocity = Vector3.zero;
         velocity = Vector3.Reflect(velocity, collision.contacts[0].normal) * 0.5f;
-        // Optional: Bounce back slightly
-        //velocity = -velocity * 0.1f;
     }
 }
