@@ -21,6 +21,6 @@ public class Camera : MonoBehaviour
         Vector3 desiredPosition = target.position + offset;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 
-        transform.rotation = Quaternion.Euler(30f, 0f, 0f); // Fixed angle
+        transform.rotation = Quaternion.Euler(30f, -37f, 0f); // Fixed angle
     }
 }

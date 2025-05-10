@@ -1,6 +1,8 @@
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
 public class HelicopterController : MonoBehaviour
 {
@@ -17,9 +19,9 @@ public class HelicopterController : MonoBehaviour
 
     void Update()
     {
-        timeElapsed += Time.deltaTime;
+       // timeElapsed += Time.deltaTime;
         int seconds = Mathf.FloorToInt(timeElapsed % 60);
-        timerText.text = $"{seconds:000}";
+       // timerText.text = $"{seconds:000}";
 
         // Input for either keyboard or controller
         float moveX = Input.GetAxis("Horizontal");
@@ -53,7 +55,7 @@ public class HelicopterController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Hit: " + collision.gameObject.name);
+        UnityEngine.Debug.Log("Hit: " + collision.gameObject.name);
         velocity = Vector3.Reflect(velocity, collision.contacts[0].normal) * 0.5f;
     }
 
@@ -64,14 +66,14 @@ public class HelicopterController : MonoBehaviour
         healthSlider.value = currentHealth / maxHealth;
     }
 
-    public Image weaponIcon;
+    //public Image weaponIcon;
     public Sprite rocketSprite;
     public Sprite minigunSprite;
 
     void SwitchWeapon(int weaponId)
     {
-        if (weaponId == 0) weaponIcon.sprite = rocketSprite;
-        if (weaponId == 1) weaponIcon.sprite = minigunSprite;
+        //if (weaponId == 0) weaponIcon.sprite = rocketSprite;
+        //if (weaponId == 1) weaponIcon.sprite = minigunSprite;
     }
 
     public TMP_Text scoreText;
