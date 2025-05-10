@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HelicopterController : MonoBehaviour
 {
@@ -7,11 +9,18 @@ public class HelicopterController : MonoBehaviour
     public float rotationSpeed = 10f;
     public float friction = 10f;
 
+    public TMP_Text timerText;
+    private float timeElapsed;
+
     private Vector3 velocity = Vector3.zero;
     private Vector3 inputDirection = Vector3.zero;
 
     void Update()
     {
+        timeElapsed += Time.deltaTime;
+        int seconds = Mathf.FloorToInt(timeElapsed % 60);
+        timerText.text = $"{seconds:000}";
+
         // Input for either keyboard or controller
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
@@ -46,5 +55,38 @@ public class HelicopterController : MonoBehaviour
     {
         Debug.Log("Hit: " + collision.gameObject.name);
         velocity = Vector3.Reflect(velocity, collision.contacts[0].normal) * 0.5f;
+    }
+
+    public Slider healthSlider;
+
+    void UpdateHealth(float currentHealth, float maxHealth)
+    {
+        healthSlider.value = currentHealth / maxHealth;
+    }
+
+    public Image weaponIcon;
+    public Sprite rocketSprite;
+    public Sprite minigunSprite;
+
+    void SwitchWeapon(int weaponId)
+    {
+        if (weaponId == 0) weaponIcon.sprite = rocketSprite;
+        if (weaponId == 1) weaponIcon.sprite = minigunSprite;
+    }
+
+    public TMP_Text scoreText;
+    private int score = 0;
+
+    public void AddScore(int amount)
+    {
+        score += amount;
+        scoreText.text = "Score: " + score;
+    }
+
+    public TMP_Text objectiveText;
+
+    public void SetObjective(string newObjective)
+    {
+        objectiveText.text = "Objective: " + newObjective;
     }
 }
