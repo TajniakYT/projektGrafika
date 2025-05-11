@@ -3,11 +3,11 @@ using UnityEngine;
 // Base class for all objects with these properties
 public class ObjectProperties : MonoBehaviour
 {
-    public float life = 100f;
+    public float health = 100f;
+    public float maxHealth = 100f;
     public float movementSpeed = 5f;
     public float shield = 0f;
 
-    // Method to take damage
     public void TakeDamage(float damage)
     {
         if (shield > 0)
@@ -15,20 +15,31 @@ public class ObjectProperties : MonoBehaviour
             shield -= damage;
             if (shield < 0)
             {
-                life += shield; // Remaining damage goes to life
+                health += shield;
                 shield = 0;
             }
         }
         else
         {
-            life -= damage;
+            health -= damage;
         }
 
-        if (life <= 0)
+        if (health <= 0)
         {
             Die();
         }
     }
+
+    public float getLife()
+    {
+        return health;
+    }
+
+    public float getMaxLife()
+    {
+        return maxHealth;
+    }
+
 
     // Method for object death
     protected virtual void Die()

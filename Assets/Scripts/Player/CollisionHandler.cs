@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour
 {
-    public ObjectProperties objectProperties; //  Reference to the ObjectProperties component on *this* GameObject.
-
+    private ObjectProperties objectProperties; //  Reference to the ObjectProperties component on *this* GameObject.
+    private HealthbarController healthbarController;
     private void Awake()
     {
         // Get the ObjectProperties component on this GameObject.
@@ -15,6 +15,15 @@ public class CollisionHandler : MonoBehaviour
             enabled = false; // Disable this script if ObjectProperties is missing.
             return;
         }
+        healthbarController = GetComponent<HealthbarController>();
+
+        if (healthbarController == null)
+        {
+            Debug.LogError("HealthbarController component not found on the same GameObject!");
+            enabled = false; // Disable this script if ObjectProperties is missing.
+            return;
+        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -35,9 +44,11 @@ public class CollisionHandler : MonoBehaviour
 
     private void HandleEnemyCollision(Collision collision)
     {
-        Debug.Log("Collided with a bullet: " + collision.gameObject.name);
-        objectProperties.TakeDamage(collision.gameObject.GetComponent<BulletProperties>().damage);
-       
+        UnityEngine.Debug.Log("Collided with a bullet: " + collision.gameObject.name);
+        float damage = collision.gameObject.GetComponent<BulletProperties>().damage;
+        objectProperties.TakeDamage(damage);
+
+        healthbarController.UpdateHealthbar(objectProperties.getLife(), objectProperties.getMaxLife());
 
         Rigidbody rb = GetComponent<Rigidbody>(); // Get the Rigidbody of this object.
         if (rb != null)
@@ -50,7 +61,7 @@ public class CollisionHandler : MonoBehaviour
 
     private void HandleDefaultCollision(Collision collision)
     {
-        Debug.Log("Collided with: " + collision.gameObject.name);
+        UnityEngine.Debug.Log("Collided with: " + collision.gameObject.name);
         Rigidbody rb = GetComponent<Rigidbody>(); // Get the Rigidbody of this object.
         if (rb != null)
         {

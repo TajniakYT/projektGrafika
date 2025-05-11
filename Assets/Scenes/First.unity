@@ -1423,8 +1423,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 20
   maxSpeed: 10
-  rotationSpeed: 20
+  rotationSpeed: 10
   friction: 10
+  timerText: {fileID: 0}
+  healthSlider: {fileID: 0}
+  weaponIcon: {fileID: 0}
+  rocketSprite: {fileID: 0}
+  minigunSprite: {fileID: 0}
+  scoreText: {fileID: 0}
+  objectiveText: {fileID: 0}
 --- !u!23 &1587318239
 MeshRenderer:
   m_ObjectHideFlags: 0
