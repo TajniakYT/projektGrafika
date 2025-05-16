@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 200660355615793790}
   - component: {fileID: 4643077670042593771}
   - component: {fileID: 3962860745855292457}
+  - component: {fileID: 289564215028181538}
+  - component: {fileID: 9180923238143169876}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -50,6 +52,8 @@ MonoBehaviour:
   optionsButton: {fileID: 0}
   quitButton: {fileID: 0}
   optionsPanel: {fileID: 0}
+  newGamePanel: {fileID: 0}
+  loadGamePanel: {fileID: 0}
 --- !u!114 &3962860745855292457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,3 +71,37 @@ MonoBehaviour:
   fullscreenToggle: {fileID: 0}
   returnButton: {fileID: 0}
   optionsPanel: {fileID: 0}
+--- !u!114 &289564215028181538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266128062132687928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73647afcebf3dd47af8356a8ccb7908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSlot1Button: {fileID: 0}
+  newSlot2Button: {fileID: 0}
+  newSlot3Button: {fileID: 0}
+  returnButton: {fileID: 0}
+  newGamePanel: {fileID: 0}
+--- !u!114 &9180923238143169876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266128062132687928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81156391ab2ba4845bd67c8fa540ff6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadSlot1Button: {fileID: 0}
+  loadSlot2Button: {fileID: 0}
+  loadSlot3Button: {fileID: 0}
+  returnButton: {fileID: 0}
+  loadGamePanel: {fileID: 0}

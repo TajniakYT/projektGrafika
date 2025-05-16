@@ -12,10 +12,14 @@ public class MainMenu : MonoBehaviour
 
     [Header("UI Panels")]
     public GameObject optionsPanel;
+    public GameObject newGamePanel;
+    public GameObject loadGamePanel;
 
     void Start()
     {
         optionsPanel.SetActive(false);
+        newGamePanel.SetActive(false);
+        loadGamePanel.SetActive(false);
         newGameButton.onClick.AddListener(NewGame);
         PlayButton.onClick.AddListener(Play);
         optionsButton.onClick.AddListener(ShowOptions);
@@ -25,13 +29,17 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         Debug.Log("Nowa gra...");
-        SceneManager.LoadScene("TestScene");
+        if (newGamePanel != null)
+            newGamePanel.SetActive(true);
+        //SceneManager.LoadScene("TestScene");
     }
 
     public void Play()
     {
         Debug.Log("Wczytujê grê...");
-        SceneManager.LoadScene("TestScene");
+        if (loadGamePanel != null)
+            loadGamePanel.SetActive(true);
+        //SceneManager.LoadScene("TestScene");
     }
 
     public void ShowOptions()
