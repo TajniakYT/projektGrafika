@@ -514,6 +514,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1680973133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2425096589214021424, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
+  m_PrefabInstance: {fileID: 4800713837926584576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1685180906 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4076530315499360841, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
@@ -525,6 +530,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1685601092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7292174826079811459, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
+  m_PrefabInstance: {fileID: 4800713837926584576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1733002661 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4993452480555923678, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
@@ -672,7 +682,23 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 513220756190723999, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
+      propertyPath: selectMissionPanel
+      value: 
+      objectReference: {fileID: 1685601092}
     - target: {fileID: 543984268850327659, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1674785668159267385, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1919526560553541398, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
+      propertyPath: selectMissionPanel
+      value: 
+      objectReference: {fileID: 1685601092}
+    - target: {fileID: 2425096589214021424, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -680,10 +706,18 @@ PrefabInstance:
       propertyPath: m_PreserveAspect
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3916073755125456390, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4049594151013824349, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6256330408761739247, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
+      propertyPath: startMissionPanel
+      value: 
+      objectReference: {fileID: 1680973133}
     - target: {fileID: 6932740185766886592, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
       propertyPath: m_Name
       value: MainMenuPanel
@@ -765,6 +799,10 @@ PrefabInstance:
       propertyPath: newSlot3Button
       value: 
       objectReference: {fileID: 1363382921}
+    - target: {fileID: 289564215028181538, guid: 1989b0facc3c23f42b4d6b2d2e8b19a6, type: 3}
+      propertyPath: selectMissionPanel
+      value: 
+      objectReference: {fileID: 1685601092}
     - target: {fileID: 1266128062132687928, guid: 1989b0facc3c23f42b4d6b2d2e8b19a6, type: 3}
       propertyPath: m_Name
       value: MenuManager
@@ -817,6 +855,14 @@ PrefabInstance:
       propertyPath: optionsButton
       value: 
       objectReference: {fileID: 595036568}
+    - target: {fileID: 4643077670042593771, guid: 1989b0facc3c23f42b4d6b2d2e8b19a6, type: 3}
+      propertyPath: startMissionPanel
+      value: 
+      objectReference: {fileID: 1680973133}
+    - target: {fileID: 4643077670042593771, guid: 1989b0facc3c23f42b4d6b2d2e8b19a6, type: 3}
+      propertyPath: selectMissionPanel
+      value: 
+      objectReference: {fileID: 1685601092}
     - target: {fileID: 9180923238143169876, guid: 1989b0facc3c23f42b4d6b2d2e8b19a6, type: 3}
       propertyPath: returnButton
       value: 
@@ -837,6 +883,10 @@ PrefabInstance:
       propertyPath: loadSlot3Button
       value: 
       objectReference: {fileID: 186327722}
+    - target: {fileID: 9180923238143169876, guid: 1989b0facc3c23f42b4d6b2d2e8b19a6, type: 3}
+      propertyPath: selectMissionPanel
+      value: 
+      objectReference: {fileID: 1685601092}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

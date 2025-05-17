@@ -11,10 +11,11 @@ public class NewGameScript : MonoBehaviour
 
     [Header("UI Panels")]
     public GameObject newGamePanel;
+    public GameObject selectMissionPanel;
     //public GameObject confirmOverwritePanel;
     private int selectedSlot = -1;
 
-    private void Start()
+    private void OnEnable()
     {
         newSlot1Button.onClick.AddListener(Button1Listener);
         newSlot2Button.onClick.AddListener(Button2Listener);
@@ -47,6 +48,7 @@ public class NewGameScript : MonoBehaviour
         if (SaveSystemScript.LoadFromSlot(slotIndex) != null)
         {
             selectedSlot = slotIndex;
+            StartNewGame(slotIndex);
             //confirmOverwritePanel.SetActive(true); // zapytaj o potwierdzenie
         }
         else
@@ -73,6 +75,9 @@ public class NewGameScript : MonoBehaviour
         SaveSystemScript.CreateEmptySave(slot); // Tworzymy nowy plik zapisu
 
         Debug.Log($"Utworzono nowy zapis w slocie {slot}");
+        SaveManagerScript.Instance.SetSlot(slot);
+        selectMissionPanel.SetActive(true);
+        newGamePanel.SetActive(false);
         // SceneManager.LoadScene("Level1"); // lub inna logika
     }
 }

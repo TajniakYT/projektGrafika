@@ -549,6 +549,7 @@ GameObject:
   - component: {fileID: 8968381216189362123}
   - component: {fileID: 2322231743966288378}
   - component: {fileID: 7294789477960944122}
+  - component: {fileID: 6008661099096747554}
   m_Layer: 5
   m_Name: OptionsPanel
   m_TagString: Untagged
@@ -617,6 +618,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6008661099096747554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438133456198019250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe721484c885b8446852b46680915c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 3236793680660761232}
+  resolutionDropdown: {fileID: 1388501494049482482}
+  fullscreenToggle: {fileID: 3103406908899896487}
+  returnButton: {fileID: 8108672895399006751}
+  optionsPanel: {fileID: 1438133456198019250}
 --- !u!1 &1596734011249031656
 GameObject:
   m_ObjectHideFlags: 0

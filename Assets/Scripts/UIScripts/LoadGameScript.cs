@@ -11,9 +11,10 @@ public class LoadGameScript : MonoBehaviour
 
     [Header("UI Panels")]
     public GameObject loadGamePanel;
+    public GameObject selectMissionPanel;
     //public GameObject emptySlotWarning;
 
-    private void Start()
+    private void OnEnable()
     {
         loadSlot1Button.onClick.AddListener(Button1Listener);
         loadSlot2Button.onClick.AddListener(Button2Listener);
@@ -52,7 +53,7 @@ public class LoadGameScript : MonoBehaviour
             }
             else
             {
-                LoadGame(data);
+                LoadGame(data, slotIndex);
             }
         }
         catch
@@ -63,10 +64,12 @@ public class LoadGameScript : MonoBehaviour
     }
 
 
-    private void LoadGame(SaveData data)
+    private void LoadGame(SaveData data, int slotIndex)
     {
-        Debug.Log($"Wczytano poziom: {data.level}, czas: {data.playTimeSeconds}");
-        // Przeka¿ dane do GameManagera lub prze³aduj scenê
+        Debug.Log($"Wczytano poziom: {data.unlockedLevels}, czas: {data.playTimeSeconds}");
+        SaveManagerScript.Instance.SetSlot(slotIndex);
+        selectMissionPanel.SetActive(true);
+        loadGamePanel.SetActive(false);
         // SceneManager.LoadScene("Level" + data.level);
     }
 

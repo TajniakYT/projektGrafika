@@ -14,12 +14,16 @@ public class MainMenu : MonoBehaviour
     public GameObject optionsPanel;
     public GameObject newGamePanel;
     public GameObject loadGamePanel;
+    public GameObject selectMissionPanel;
+    public GameObject startMissionPanel;
 
     void Start()
     {
         optionsPanel.SetActive(false);
         newGamePanel.SetActive(false);
         loadGamePanel.SetActive(false);
+        selectMissionPanel.SetActive(false);
+        startMissionPanel.SetActive(false);
         newGameButton.onClick.AddListener(NewGame);
         PlayButton.onClick.AddListener(Play);
         optionsButton.onClick.AddListener(ShowOptions);
@@ -31,7 +35,6 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Nowa gra...");
         if (newGamePanel != null)
             newGamePanel.SetActive(true);
-        //SceneManager.LoadScene("TestScene");
     }
 
     public void Play()
@@ -39,7 +42,6 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Wczytujê grê...");
         if (loadGamePanel != null)
             loadGamePanel.SetActive(true);
-        //SceneManager.LoadScene("TestScene");
     }
 
     public void ShowOptions()

@@ -7,7 +7,7 @@ public class SaveData
     public int level = 1;
     public float playTimeSeconds = 0f;
     public float health = 100f;
-    // Mo¿esz dodaæ wiêcej danych póŸniej
+    public int unlockedLevels = 1;
 }
 
 public static class SaveSystemScript
