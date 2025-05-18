@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 32bf6a024b8de1045969d7f7e3259bca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b16f82bd69b50f4ba57df809c105bd2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -949,6 +949,7 @@ GameObject:
   - component: {fileID: 6853934369917314319}
   - component: {fileID: 3381673003596335668}
   - component: {fileID: 2509967988561514654}
+  - component: {fileID: 2958644017438729096}
   m_Layer: 5
   m_Name: MainMenuPanel
   m_TagString: Untagged
@@ -1086,6 +1087,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2958644017438729096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6932740185766886592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a0e419c50b804468e92cf877cf9b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newGameButton: {fileID: 7461802059607187047}
+  PlayButton: {fileID: 2944340782318318559}
+  optionsButton: {fileID: 881211858195811344}
+  quitButton: {fileID: 154776653326877377}
+  optionsPanel: {fileID: 543984268850327659}
+  newGamePanel: {fileID: 3916073755125456390}
+  loadGamePanel: {fileID: 1674785668159267385}
+  selectMissionPanel: {fileID: 7292174826079811459}
+  startMissionPanel: {fileID: 2425096589214021424}
 --- !u!1 &7828574160489478909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,6 +1408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartMissionPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 2446793260567704036, guid: 075fd64551e56ea4ba16ab5e9b692ce4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3989797652792923980, guid: 075fd64551e56ea4ba16ab5e9b692ce4, type: 3}
       propertyPath: optionsPanel
       value: 
@@ -1404,6 +1430,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 169540638711612785, guid: 075fd64551e56ea4ba16ab5e9b692ce4, type: 3}
   m_PrefabInstance: {fileID: 23483362717583060}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2425096589214021424 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2446793260567704036, guid: 075fd64551e56ea4ba16ab5e9b692ce4, type: 3}
+  m_PrefabInstance: {fileID: 23483362717583060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1475447904099424473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1418,7 +1449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1262414596753705176, guid: 89da5cca372d83d46a4d990d9c1ef7cf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1438133456198019250, guid: 89da5cca372d83d46a4d990d9c1ef7cf, type: 3}
       propertyPath: m_Name
@@ -1426,7 +1457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1438133456198019250, guid: 89da5cca372d83d46a4d990d9c1ef7cf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1905820316704422480, guid: 89da5cca372d83d46a4d990d9c1ef7cf, type: 3}
       propertyPath: m_text
@@ -1438,7 +1469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3191596801301770116, guid: 89da5cca372d83d46a4d990d9c1ef7cf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5198847572777702249, guid: 89da5cca372d83d46a4d990d9c1ef7cf, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1575,6 +1606,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewGamePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 237695442595794486, guid: d93d9dd0aa592e74cbe1acdbf20350b6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5699428914601533859, guid: d93d9dd0aa592e74cbe1acdbf20350b6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1660,6 +1695,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d93d9dd0aa592e74cbe1acdbf20350b6, type: 3}
+--- !u!1 &3916073755125456390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 237695442595794486, guid: d93d9dd0aa592e74cbe1acdbf20350b6, type: 3}
+  m_PrefabInstance: {fileID: 3824900700003717168}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8794604890156921235 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5699428914601533859, guid: d93d9dd0aa592e74cbe1acdbf20350b6, type: 3}
@@ -1680,6 +1720,10 @@ PrefabInstance:
     - target: {fileID: 4466863492105038478, guid: ac7af02876cdee148bc0a82f9f810843, type: 3}
       propertyPath: m_Name
       value: SelectMissionPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466863492105038478, guid: ac7af02876cdee148bc0a82f9f810843, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5338054580332091254, guid: ac7af02876cdee148bc0a82f9f810843, type: 3}
       propertyPath: m_Pivot.x
@@ -1868,6 +1912,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadGamePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8861295563416387955, guid: 4feee6d5e82cb8f408564662bb66e61d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1876,5 +1924,10 @@ PrefabInstance:
 --- !u!224 &1662247027785857287 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8851492129763908173, guid: 4feee6d5e82cb8f408564662bb66e61d, type: 3}
+  m_PrefabInstance: {fileID: 7910482502754607946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1674785668159267385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8861295563416387955, guid: 4feee6d5e82cb8f408564662bb66e61d, type: 3}
   m_PrefabInstance: {fileID: 7910482502754607946}
   m_PrefabAsset: {fileID: 0}
