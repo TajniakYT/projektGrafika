@@ -568,32 +568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1883350681 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6932740185766886592, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
-  m_PrefabInstance: {fileID: 4800713837926584576}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1883350687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1883350681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a0e419c50b804468e92cf877cf9b22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newGameButton: {fileID: 79807620}
-  PlayButton: {fileID: 1635137057}
-  optionsButton: {fileID: 595036568}
-  quitButton: {fileID: 914231369}
-  optionsPanel: {fileID: 768993905}
-  newGamePanel: {fileID: 111348055}
-  loadGamePanel: {fileID: 459091360}
-  selectMissionPanel: {fileID: 1685601092}
-  startMissionPanel: {fileID: 1680973133}
 --- !u!114 &1910479635 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6465731271666882084, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
@@ -920,10 +894,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 8068230497642620284, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6932740185766886592, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1883350687}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0fb69fc2fe5cd44d90dcea203a93020, type: 3}
 --- !u!1001 &7879351912207822864
 PrefabInstance:
@@ -1081,8 +1052,7 @@ PrefabInstance:
       propertyPath: selectMissionPanel
       value: 
       objectReference: {fileID: 1685601092}
-    m_RemovedComponents:
-    - {fileID: 4643077670042593771, guid: 1989b0facc3c23f42b4d6b2d2e8b19a6, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
