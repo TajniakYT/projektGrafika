@@ -1457,7 +1457,7 @@ TerrainCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741710420}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 9566d9cc601a082478b171a9aa039801, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2910,6 +2910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 176282732}
+  heli: {fileID: 1587318236}
   shootInterval: 0.2
   firePoint: {fileID: 683654498}
   mainCamera: {fileID: 399487784}
