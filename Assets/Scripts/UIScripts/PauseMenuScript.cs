@@ -6,6 +6,7 @@ public class PauseMenuScript : MonoBehaviour
 {
     [Header("Buttons")]
     public Button resumeButton;
+    public Button restartButton;
     public Button optionsButton;
     public Button quitButton;
 
@@ -19,6 +20,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         optionsPanel.SetActive(false);
         resumeButton.onClick.AddListener(Resume);
+        restartButton.onClick.AddListener(Restart);
         optionsButton.onClick.AddListener(OpenOptions);
         quitButton.onClick.AddListener(QuitToMainMenu);
         if (pausePanel != null)
@@ -52,6 +54,13 @@ public class PauseMenuScript : MonoBehaviour
         isPaused = true;
         if (pausePanel != null)
             pausePanel.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 
     public void OpenOptions()

@@ -12,7 +12,7 @@ public class OptionsScript : MonoBehaviour
 
     Resolution[] resolutions;
 
-    void Start()
+    void OnEnable()
     {
         // Inicjalizacja rozdzielczoœci
         resolutions = Screen.resolutions;
