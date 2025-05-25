@@ -52,4 +52,10 @@ public class HelicopterController : MonoBehaviour
     {
         objectiveText.text = "Objective: " + newObjective;
     }
+
+    public Vector3 getSpeed()
+    {
+        velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+        return velocity;
+    }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class HeliShoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public GameObject heli;
     public float shootInterval = 0.2f; // Adjust for firing rate
     public Transform firePoint; // Assign in Inspector
     public UnityEngine.Camera mainCamera; // Assign in Inspector
@@ -29,6 +30,7 @@ public class HeliShoot : MonoBehaviour
             if (bulletProperties != null)
             {
                 bulletSpeed = bulletProperties.speed;
+                UnityEngine.Debug.Log(bulletSpeed);
                 bulletLifetime = bulletProperties.lifetime;
             }
             else
@@ -78,7 +80,8 @@ public class HeliShoot : MonoBehaviour
 
         if (bulletRb != null)
         {
-            bulletRb.velocity = direction * bulletSpeed;
+            HelicopterController helicopterProperties = heli.GetComponent<HelicopterController>();
+            bulletRb.velocity = direction * bulletSpeed + helicopterProperties.getSpeed();
         }
 
         Destroy(bullet, bulletLifetime);
