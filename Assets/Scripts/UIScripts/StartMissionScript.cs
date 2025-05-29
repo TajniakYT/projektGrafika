@@ -24,7 +24,7 @@ public class StartMissionScript : MonoBehaviour
     public void StartMission()
     {
         if (GameSessionScript.Instance.selectedMission == 1)
-            SceneManager.LoadScene("TestScene");
+            SceneManager.LoadScene("First");
         else if (GameSessionScript.Instance.selectedMission == 2)
             SceneManager.LoadScene("TestScene");
         else if (GameSessionScript.Instance.selectedMission == 3)
