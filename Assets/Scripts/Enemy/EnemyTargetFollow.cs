@@ -16,6 +16,6 @@ public class EnemyFollow : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
 
         // Move towards the Target
-        // transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        transform.position += transform.forward * moveSpeed * Time.deltaTime;
     }
 }

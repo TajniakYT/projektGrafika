@@ -33,6 +33,10 @@ public class CollisionHandler : MonoBehaviour
         {
             HandleEnemyCollision(collision);
         }
+        else if (collision.gameObject.tag == "Ammunition")
+        {
+            HandleEnemyCollision(collision);
+        }
         else if (collision.gameObject.tag == "Pickup")
         {
         }

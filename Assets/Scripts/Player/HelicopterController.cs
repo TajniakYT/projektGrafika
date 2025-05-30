@@ -46,13 +46,6 @@ public class HelicopterController : MonoBehaviour
         }
     }
 
-    public TMP_Text objectiveText;
-
-    public void SetObjective(string newObjective)
-    {
-        objectiveText.text = "Objective: " + newObjective;
-    }
-
     public Vector3 getSpeed()
     {
         velocity = Vector3.ClampMagnitude(velocity, maxSpeed);

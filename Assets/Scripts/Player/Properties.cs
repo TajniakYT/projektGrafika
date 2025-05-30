@@ -7,7 +7,7 @@ public class ObjectProperties : MonoBehaviour
     public float maxHealth = 100f;
     public float movementSpeed = 5f;
     public float shield = 0f;
-
+    public ScoreCounter scoreCounter;
     public void TakeDamage(float damage)
     {
 
@@ -45,7 +45,7 @@ public class ObjectProperties : MonoBehaviour
     // Method for object death
     protected virtual void Die()
     {
-
+        scoreCounter.AddScore(100);
         Destroy(gameObject); 
     }
 

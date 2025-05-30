@@ -11,6 +11,6 @@ public class NewBehaviourScript : MonoBehaviour
     {
         timeElapsed += Time.deltaTime;
         int seconds = Mathf.FloorToInt(timeElapsed % 60);
-        timerText.text = $"{seconds:000}";
+        timerText.text = "Time: " + seconds;
     }
 }

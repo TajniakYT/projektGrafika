@@ -7,16 +7,17 @@ public class HeliShoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public GameObject heli;
-    public float shootInterval = 0.2f; // Adjust for firing rate
-    public Transform firePoint; // Assign in Inspector
-    public UnityEngine.Camera mainCamera; // Assign in Inspector
+    public float shootInterval = 0.2f;
+    public Transform firePoint;
+    public UnityEngine.Camera mainCamera;
 
     private float shootTimer = 0f;
     private float bulletSpeed;
     private float bulletLifetime;
-
+    private Vector3 lastHeliPosition;
     void Awake()
     {
+        lastHeliPosition = heli.transform.position;
         if (mainCamera == null)
             Debug.LogError("Source: HeliShoot - no camera found");
         GetBulletProperties();
@@ -48,11 +49,21 @@ public class HeliShoot : MonoBehaviour
 
         if (Input.GetMouseButton(0) && shootTimer >= shootInterval)
         {
+            Vector3 currentPos = heli.transform.position;
             Vector3? targetPos = GetMouseWorldPosition();
-            if (targetPos.HasValue)
+            Vector3 aimDir = (targetPos.Value - transform.position).normalized;
+            Vector3 moveDir = (currentPos - lastHeliPosition).normalized;
+            lastHeliPosition = heli.transform.position;
+            Vector3 directionReference = moveDir != Vector3.zero ? moveDir : heli.transform.forward;
+
+            float cosAngle = Vector3.Dot(directionReference, aimDir);
+            if (cosAngle > 0f)
             {
-                Shoot(targetPos.Value);
-                shootTimer = 0f;
+                if (targetPos.HasValue)
+                {
+                    Shoot(targetPos.Value);
+                    shootTimer = 0f;
+                }
             }
         }
     }
