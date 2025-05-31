@@ -48,20 +48,35 @@ public class CollisionHandler : MonoBehaviour
 
     private void HandleEnemyCollision(Collision collision)
     {
-        UnityEngine.Debug.Log("Collided with a bullet: " + collision.gameObject.name);
-        float damage = collision.gameObject.GetComponent<BulletProperties>().damage;
-        objectProperties.TakeDamage(damage);
+        Debug.Log("Collided with enemy projectile: " + collision.gameObject.name);
 
+        float damage = 0f;
+
+        if (collision.gameObject.TryGetComponent<BulletProperties>(out var bullet))
+        {
+            damage = bullet.damage;
+        }
+        else if (collision.gameObject.TryGetComponent<HomingMissileScript>(out var missile))
+        {
+            damage = missile.damage;
+        }
+        else
+        {
+            Debug.LogWarning("No damage component found on: " + collision.gameObject.name);
+            return;
+        }
+
+        objectProperties.TakeDamage(damage);
         healthbarController.UpdateHealthbar(objectProperties.getLife(), objectProperties.getMaxLife());
 
-        Rigidbody rb = GetComponent<Rigidbody>(); // Get the Rigidbody of this object.
+        Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.velocity = Vector3.Reflect(rb.velocity, collision.contacts[0].normal) * 0.5f;
         }
+
+        Destroy(collision.gameObject);
     }
-
-
 
     private void HandleDefaultCollision(Collision collision)
     {

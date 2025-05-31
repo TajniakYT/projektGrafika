@@ -14,15 +14,32 @@ public class PauseMenuScript : MonoBehaviour
     public GameObject pausePanel;
     public GameObject optionsPanel;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip clickSound;
+
     private bool isPaused = false;
 
     private void Start()
     {
         optionsPanel.SetActive(false);
-        resumeButton.onClick.AddListener(Resume);
-        restartButton.onClick.AddListener(Restart);
-        optionsButton.onClick.AddListener(OpenOptions);
-        quitButton.onClick.AddListener(QuitToMainMenu);
+        resumeButton.onClick.AddListener(() =>
+        {
+            PlayClickSound();
+            Resume();
+        });
+        restartButton.onClick.AddListener(() => {
+            PlayClickSound();
+            Restart();
+        });
+        optionsButton.onClick.AddListener(() => {
+            PlayClickSound();
+            OpenOptions();
+        });
+        quitButton.onClick.AddListener(() => {
+            PlayClickSound();
+            QuitToMainMenu();
+        });
         if (pausePanel != null)
             pausePanel.SetActive(false);
     }
@@ -73,5 +90,13 @@ public class PauseMenuScript : MonoBehaviour
     {
         Time.timeScale = 1f; // zawsze resetuj czas!
         SceneManager.LoadScene("MainMenu");
+    }
+
+    void PlayClickSound()
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
     }
 }

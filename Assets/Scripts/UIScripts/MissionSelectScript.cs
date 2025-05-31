@@ -15,16 +15,39 @@ public class MissionSelectScript : MonoBehaviour
     public GameObject selectMissionPanel;
     public GameObject startMissionPanel;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip clickSound;
+
     SaveData data;
 
     private void OnEnable()
     {
-        selectMission1Button.onClick.AddListener(SelectedMission1);
-        selectMission2Button.onClick.AddListener(SelectedMission2);
-        selectMission3Button.onClick.AddListener(SelectedMission3);
-        selectMission4Button.onClick.AddListener(SelectedMission4);
-        selectMission5Button.onClick.AddListener(SelectedMission5);
-        returnButton.onClick.AddListener(ReturnToMenu);
+        selectMission1Button.onClick.AddListener(() =>
+        {
+            PlayClickSound();
+            SelectedMission1();
+        });
+        selectMission2Button.onClick.AddListener(() => {
+            PlayClickSound();
+            SelectedMission2();
+        });
+        selectMission3Button.onClick.AddListener(() => {
+            PlayClickSound();
+            SelectedMission3();
+        });
+        selectMission4Button.onClick.AddListener(() => {
+            PlayClickSound();
+            SelectedMission4();
+        });
+        selectMission5Button.onClick.AddListener(() => {
+            PlayClickSound();
+            SelectedMission5();
+        });
+        returnButton.onClick.AddListener(() => {
+            PlayClickSound();
+            ReturnToMenu();
+        });
         data = SaveSystemScript.LoadFromSlot(SaveManagerScript.Instance.GetSlot());
         if (data != null)
         {
@@ -93,5 +116,13 @@ public class MissionSelectScript : MonoBehaviour
     public void ReturnToMenu()
     {
         selectMissionPanel.SetActive(false);
+    }
+
+    void PlayClickSound()
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
     }
 }

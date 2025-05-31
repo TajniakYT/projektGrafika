@@ -14,11 +14,24 @@ public class StartMissionScript : MonoBehaviour
     public GameObject selectMissionPanel;
     public GameObject optionsPanel;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip clickSound;
+
     void OnEnable()
     {
-        missionStartButton.onClick.AddListener(StartMission);
-        missionOptonsButton.onClick.AddListener(Options);
-        missionReturnButton.onClick.AddListener(Return);
+        missionStartButton.onClick.AddListener(() => {
+            PlayClickSound();
+            StartMission();
+        });
+        missionOptonsButton.onClick.AddListener(() => {
+            PlayClickSound();
+            Options();
+        });
+        missionReturnButton.onClick.AddListener(() => {
+            PlayClickSound();
+            Return();
+        });
     }
 
     public void StartMission()
@@ -46,5 +59,13 @@ public class StartMissionScript : MonoBehaviour
     {
         selectMissionPanel.SetActive(true);
         startMissionPanel.SetActive(false);
+    }
+
+    void PlayClickSound()
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
     }
 }

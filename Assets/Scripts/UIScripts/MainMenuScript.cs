@@ -17,6 +17,10 @@ public class MainMenu : MonoBehaviour
     public GameObject selectMissionPanel;
     public GameObject startMissionPanel;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip clickSound;
+
     void Start()
     {
         optionsPanel.SetActive(false);
@@ -24,10 +28,21 @@ public class MainMenu : MonoBehaviour
         loadGamePanel.SetActive(false);
         selectMissionPanel.SetActive(false);
         startMissionPanel.SetActive(false);
-        newGameButton.onClick.AddListener(NewGame);
-        PlayButton.onClick.AddListener(Play);
-        optionsButton.onClick.AddListener(ShowOptions);
-        quitButton.onClick.AddListener(QuitGame);
+        newGameButton.onClick.AddListener(() => {
+            PlayClickSound();
+            NewGame();
+        });
+        PlayButton.onClick.AddListener(() => {
+            PlayClickSound();
+            Play();
+        });
+        optionsButton.onClick.AddListener(() => { PlayClickSound();
+            ShowOptions();
+        });
+        quitButton.onClick.AddListener(() => {
+            PlayClickSound();
+            QuitGame();
+        });
     }
 
     public void NewGame()
@@ -59,5 +74,13 @@ public class MainMenu : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
+    }
+
+    void PlayClickSound()
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
     }
 }

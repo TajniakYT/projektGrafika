@@ -14,12 +14,29 @@ public class LoadGameScript : MonoBehaviour
     public GameObject selectMissionPanel;
     //public GameObject emptySlotWarning;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip clickSound;
+
     private void OnEnable()
     {
-        loadSlot1Button.onClick.AddListener(Button1Listener);
-        loadSlot2Button.onClick.AddListener(Button2Listener);
-        loadSlot3Button.onClick.AddListener(Button3Listener);
-        returnButton.onClick.AddListener(ReturnToMainMenu);
+        loadSlot1Button.onClick.AddListener(() =>
+        {
+            PlayClickSound();
+            Button1Listener();
+        });
+        loadSlot2Button.onClick.AddListener(() => {
+            PlayClickSound();
+            Button2Listener();
+        });
+        loadSlot3Button.onClick.AddListener(() => {
+            PlayClickSound();
+            Button3Listener();
+        });
+        returnButton.onClick.AddListener(() => {
+            PlayClickSound();
+            ReturnToMainMenu();
+        });
     }
 
     public void Button1Listener()
@@ -70,7 +87,6 @@ public class LoadGameScript : MonoBehaviour
         SaveManagerScript.Instance.SetSlot(slotIndex);
         selectMissionPanel.SetActive(true);
         loadGamePanel.SetActive(false);
-        // SceneManager.LoadScene("Level" + data.level);
     }
 
     private void ShowEmptyWarning()
@@ -82,5 +98,13 @@ public class LoadGameScript : MonoBehaviour
     private void HideEmptyWarning()
     {
         //emptySlotWarning.SetActive(false);
+    }
+
+    void PlayClickSound()
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
     }
 }

@@ -7,10 +7,17 @@ public class GameCompleteScript : MonoBehaviour
     public GameObject GameCompletePanel;
     public Button saveButton;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip clickSound;
+
     private void Start()
     {
         GameCompletePanel.SetActive(false);
-        saveButton.onClick.AddListener(SaveAndReturnToMenu);
+        saveButton.onClick.AddListener(() => {
+            PlayClickSound();
+            SaveAndReturnToMenu();
+        });
     }
 
     public void ShowGameCompletePanel()
@@ -38,5 +45,13 @@ public class GameCompleteScript : MonoBehaviour
         // Wróæ do menu
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    void PlayClickSound()
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
     }
 }

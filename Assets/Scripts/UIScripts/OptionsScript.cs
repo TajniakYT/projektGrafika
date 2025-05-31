@@ -10,6 +10,10 @@ public class OptionsScript : MonoBehaviour
     public Button returnButton;
     public GameObject optionsPanel;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip clickSound;
+
     Resolution[] resolutions;
 
     void OnEnable()
@@ -44,7 +48,10 @@ public class OptionsScript : MonoBehaviour
         volumeSlider.onValueChanged.AddListener(SetVolume);
         resolutionDropdown.onValueChanged.AddListener(SetResolution);
         fullscreenToggle.onValueChanged.AddListener(SetFullscreen);
-        returnButton.onClick.AddListener(BackToMainMenu);
+        returnButton.onClick.AddListener(() => {
+            PlayClickSound();
+            BackToMainMenu();
+        });
     }
 
     public void SetVolume(float volume)
@@ -66,5 +73,13 @@ public class OptionsScript : MonoBehaviour
     public void BackToMainMenu()
     {
         optionsPanel.SetActive(false);
+    }
+
+    void PlayClickSound()
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
     }
 }

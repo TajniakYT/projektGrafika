@@ -13,14 +13,31 @@ public class NewGameScript : MonoBehaviour
     public GameObject newGamePanel;
     public GameObject selectMissionPanel;
     //public GameObject confirmOverwritePanel;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip clickSound;
+
     private int selectedSlot = -1;
 
     private void OnEnable()
     {
-        newSlot1Button.onClick.AddListener(Button1Listener);
-        newSlot2Button.onClick.AddListener(Button2Listener);
-        newSlot3Button.onClick.AddListener(Button3Listener);
-        returnButton.onClick.AddListener(ReturnToMainMenu);
+        newSlot1Button.onClick.AddListener(() => {
+            PlayClickSound();
+            Button1Listener();
+        });
+        newSlot2Button.onClick.AddListener(() => {
+            PlayClickSound();
+            Button2Listener();
+        });
+        newSlot3Button.onClick.AddListener(() => {
+            PlayClickSound();
+            Button3Listener();
+        });
+        returnButton.onClick.AddListener(() => {
+            PlayClickSound();
+            ReturnToMainMenu();
+        });
     }
 
     public void Button1Listener()
@@ -78,6 +95,13 @@ public class NewGameScript : MonoBehaviour
         SaveManagerScript.Instance.SetSlot(slot);
         selectMissionPanel.SetActive(true);
         newGamePanel.SetActive(false);
-        // SceneManager.LoadScene("Level1"); // lub inna logika
+    }
+
+    void PlayClickSound()
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
     }
 }

@@ -12,13 +12,29 @@ public class GameOverScript : MonoBehaviour
 
     [Header("Panels")]
     public GameObject GameOverPanel;
-    
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip clickSound;
+
     void Start()
     {
         GameOverPanel.SetActive(false);
-        restartButton.onClick.AddListener(Restart);
-        returnButton.onClick.AddListener(ReturnToMainMenu);
-        quitButton.onClick.AddListener(ReturnToMainMenu);
+        restartButton.onClick.AddListener(() =>
+        {
+            PlayClickSound();
+            Restart();
+        });
+        returnButton.onClick.AddListener(() =>
+        {
+            PlayClickSound();
+            ReturnToMainMenu();
+        });
+        quitButton.onClick.AddListener(() =>
+        {
+            PlayClickSound();
+            ReturnToMainMenu();
+        });
     }
 
     public void ShowGameOverScreen()
@@ -38,5 +54,13 @@ public class GameOverScript : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    void PlayClickSound()
+    {
+        if (audioSource != null && clickSound != null)
+        {
+            audioSource.PlayOneShot(clickSound);
+        }
     }
 }
