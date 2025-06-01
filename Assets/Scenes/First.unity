@@ -1426,6 +1426,7 @@ GameObject:
   - component: {fileID: 540094824}
   - component: {fileID: 540094823}
   - component: {fileID: 540094822}
+  - component: {fileID: 540094828}
   m_Layer: 9
   m_Name: RocketAmmunition
   m_TagString: Ammunition
@@ -1564,6 +1565,18 @@ Transform:
   - {fileID: 1048608990}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &540094828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540094821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647bc2655e961a14bb771fc6a281d196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &549022563
 GameObject:
   m_ObjectHideFlags: 0
@@ -4792,6 +4805,7 @@ GameObject:
   - component: {fileID: 1354485291}
   - component: {fileID: 1354485295}
   - component: {fileID: 1354485296}
+  - component: {fileID: 1354485297}
   m_Layer: 9
   m_Name: DefaultAmmunition
   m_TagString: Ammunition
@@ -4928,6 +4942,18 @@ MonoBehaviour:
   speed: 25
   lifetime: 5
   damage: 10
+--- !u!114 &1354485297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354485290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9bc67d9c3ad8f34c8a69c013a496de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1364637235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6101,9 +6127,10 @@ MonoBehaviour:
   bulletPrefabs:
   - {fileID: 1354485290}
   - {fileID: 540094821}
-  weaponIcon: {fileID: 0}
-  rocketSprite: {fileID: 0}
-  minigunSprite: {fileID: 0}
+  weaponIconSprites:
+  - {fileID: 21300000, guid: 8ca4abf51c7c3dc4dbf4267a8e3904cd, type: 3}
+  - {fileID: 21300000, guid: a041fb580e187284b956d74ff30ae944, type: 3}
+  weaponIcon: {fileID: 1332879806}
   heliShoot: {fileID: 1587318244}
 --- !u!4 &1609172500 stripped
 Transform:
