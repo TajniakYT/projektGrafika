@@ -1,14 +1,26 @@
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
 {
     public Transform Target;    // Assign your Target GameObject here
-    public float moveSpeed = 5f;  // Movement speed
+    private float moveSpeed=0;  // Movement speed
     public float rotationSpeed = 5f; // How quickly it rotates
 
+    private float speed;
+
+    void Start()
+    {
+        speed = GetComponent<ObjectProperties>().movementSpeed;
+    }
     void Update()
     {
         if (Target == null) return;
+        var state = GetComponent<Detection>().GetCurrentState();
+
+        moveSpeed = (state == DetectionState.Following) ? speed : 0f;
+
+
 
         // Rotate to face the Target
         Vector3 direction = (Target.position - transform.position).normalized;

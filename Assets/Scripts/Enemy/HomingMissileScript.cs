@@ -33,9 +33,8 @@ public class HomingMissileScript : MonoBehaviour
 
         transform.position += transform.forward * speed * Time.deltaTime;
 
-        if (currentLifetime >= lifetime)
-        {
-            Destroy(gameObject);
-        }
+        
+        Destroy(gameObject,lifetime);
+        
     }
 }

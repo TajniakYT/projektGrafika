@@ -1,5 +1,6 @@
 
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 
@@ -39,6 +40,7 @@ public class HeliShoot : MonoBehaviour
                 bulletSpeed = bulletProperties.speed;
                 UnityEngine.Debug.Log(bulletSpeed);
                 bulletLifetime = bulletProperties.lifetime;
+                shootInterval = bulletProperties.shootInterval;
             }
             else
             {
@@ -51,6 +53,7 @@ public class HeliShoot : MonoBehaviour
 
     void Update()
     {
+        
         shootTimer += Time.deltaTime;
 
         if (Input.GetMouseButton(0) && shootTimer >= shootInterval)

@@ -86,6 +86,9 @@ public class EnemyShoot : MonoBehaviour
 
     void Update()
     {
+        //check if enemy should be attacking if not return
+        if (!(GetComponent<Detection>().GetCurrentState() == DetectionState.Attacking)) return;
+
         if (Target == null || currentBullet.bulletPrefab == null || firePoint == null) return;
 
         shootTimer += Time.deltaTime;

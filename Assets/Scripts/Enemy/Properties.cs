@@ -6,24 +6,15 @@ public class ObjectProperties : MonoBehaviour
     public float health = 100f;
     public float maxHealth = 100f;
     public float movementSpeed = 5f;
-    public float shield = 0f;
+    public float shootingDistance = 5f;
+
     public ScoreCounter scoreCounter;
     public void TakeDamage(float damage)
     {
 
-        if (shield > 0)
-        {
-            shield -= damage;
-            if (shield < 0)
-            {
-                health += shield;
-                shield = 0;
-            }
-        }
-        else
-        {
-            health -= damage;
-        }
+      
+        health -= damage;
+        
 
         if (health <= 0)
         {
@@ -49,15 +40,7 @@ public class ObjectProperties : MonoBehaviour
         Destroy(gameObject); 
     }
 
-    public virtual void RepairShield(float repairAmount)
-    {
-        shield += repairAmount;
-
-        if (shield > 100f)
-        {
-            shield = 100f;
-        }
-    }
+   
     public virtual void PickUpSpeedBoost(float boostAmount, float duration)
     {
         movementSpeed += boostAmount;
