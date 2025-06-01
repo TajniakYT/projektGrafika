@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -20,6 +21,11 @@ public class HeliShoot : MonoBehaviour
         lastHeliPosition = heli.transform.position;
         if (mainCamera == null)
             Debug.LogError("Source: HeliShoot - no camera found");
+        GetBulletProperties();
+    }
+    public void SetBulletPrefab(GameObject newBulletPrefab)
+    {
+        bulletPrefab = newBulletPrefab;
         GetBulletProperties();
     }
 
@@ -83,18 +89,11 @@ public class HeliShoot : MonoBehaviour
 
     void Shoot(Vector3 targetPosition)
     {
-        Vector3 spawnPosition = firePoint.position;
-        Vector3 direction = (targetPosition - spawnPosition).normalized;
-
-        GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.LookRotation(direction));
-        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-
-        if (bulletRb != null)
+        IBulletBehavior bulletBehavior = bulletPrefab.GetComponent<IBulletBehavior>();
+        if (bulletBehavior != null)
         {
-            HelicopterController helicopterProperties = heli.GetComponent<HelicopterController>();
-            bulletRb.velocity = direction * bulletSpeed + helicopterProperties.getSpeed();
+            bulletBehavior.Shoot(targetPosition, firePoint, bulletPrefab);
         }
 
-        Destroy(bullet, bulletLifetime);
     }
 }

@@ -1,16 +1,59 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections.Generic;
+
+public enum WeaponTypes
+{
+    Minigun,
+    Rocket
+}
 
 public class WeaponSwitch : MonoBehaviour
 {
-    public UnityEngine.UI.Image weaponIcon;
-    public Sprite rocketSprite;
-    public Sprite minigunSprite;
+    public List<GameObject> bulletPrefabs;
+    public List<Sprite> weaponIconSprites;
 
-    void SwitchWeapon(int weaponId)
+    public Image weaponIcon;
+    //public Sprite rocketSprite;
+    //public Sprite minigunSprite;
+    public HeliShoot heliShoot;
+    private int weaponId = 0;
+
+
+    void Start()
     {
-        if (weaponId == 0) weaponIcon.sprite = rocketSprite;
-        if (weaponId == 1) weaponIcon.sprite = minigunSprite;
+        heliShoot = GetComponent<HeliShoot>();
+
+        if (heliShoot == null)
+            Debug.LogError("HeliShoot not found!");
+
+        if(weaponIconSprites.Count!=bulletPrefabs.Count)
+            Debug.LogError("Different number of ammo prefabs and sprites!");
+
+        weaponIcon.sprite = weaponIconSprites[weaponId];  
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SwitchWeapon();
+        }
+    }
+
+    void SwitchWeapon()
+    {
+        weaponId++;
+
+        if (weaponId >= weaponIconSprites.Count)
+        {
+            weaponId = 0;
+        }
+
+        weaponIcon.sprite = weaponIconSprites[weaponId];
+
+        heliShoot.SetBulletPrefab(bulletPrefabs[weaponId]);
+
+        Debug.Log("Switched to weapon: " + (WeaponTypes)weaponId);
     }
 }
