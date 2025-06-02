@@ -1,4 +1,6 @@
+
 using UnityEngine;
+using System;
 
 public class HomingMissileScript : MonoBehaviour
 {
@@ -33,6 +35,25 @@ public class HomingMissileScript : MonoBehaviour
         else
         {
             rb.velocity = forward * speed;
+        }
+    }
+
+    void OnDestroy()
+    {
+        try
+        {
+            Transform lightTransform = target.Find("Marked");
+            if (lightTransform != null)
+            {
+                Light pointLight = lightTransform.GetComponent<Light>();
+                if (pointLight != null)
+                {
+                    pointLight.enabled = false; // lub false, aby wy³¹czyæ
+                }
+            }
+        }catch(Exception e)
+        {
+            Debug.Log(e);
         }
     }
 }

@@ -36,7 +36,19 @@ public class RocketAmmunition : MonoBehaviour, IBulletBehavior
             missileScript.target = closestEnemy.transform;
         }
         Destroy(missile, missile.GetComponent<BulletProperties>().lifetime);
-       
+
+
+        //activate mark on chosen enemyTransform markedTransform = closestEnemy.transform.Find("Marked");
+        Transform lightTransform = closestEnemy.transform.Find("Marked");
+        if (lightTransform != null)
+        {
+            Light pointLight = lightTransform.GetComponent<Light>();
+            if (pointLight != null)
+            {
+                pointLight.enabled = true; // lub false, aby wy³¹czyæ
+            }
+        }
+
     }
 
 
