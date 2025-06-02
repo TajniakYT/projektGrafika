@@ -2,39 +2,37 @@ using UnityEngine;
 
 public class HomingMissileScript : MonoBehaviour
 {
-    public float speed = 20f;
-    public float turnSpeed = 90f;
-    public float lifetime = 5f;
-    public float maxTrackingAngle = 60f;
-    public float damage = 20f;
     public Transform target;
+    public float speed = 20f;
+    public float turnSpeed = 5f; // w radianach na sekundê
 
-    private float currentLifetime = 0f;
+    private Rigidbody rb;
 
-    void Update()
+    void Start()
     {
-        currentLifetime += Time.deltaTime;
+        rb = GetComponent<Rigidbody>();
+        rb.velocity = new Vector3(transform.forward.x, 0f, transform.forward.z).normalized * speed;
+    }
+
+    void FixedUpdate()
+    {
+        Vector3 forward = new Vector3(transform.forward.x, 0f, transform.forward.z).normalized;
 
         if (target != null)
         {
-            Vector3 toTarget = (target.position - transform.position).normalized;
-            float angle = Vector3.Angle(transform.forward, toTarget);
+            Vector3 directionToTarget = (target.position - transform.position);
+            directionToTarget.y = 0f; 
+            directionToTarget.Normalize();
 
-            if (angle <= maxTrackingAngle)
-            {
-                Quaternion targetRot = Quaternion.LookRotation(toTarget);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, turnSpeed * Time.deltaTime);
-            }
-            else
-            {
-                target = null;
-            }
+            Vector3 newDirection = Vector3.RotateTowards(forward, directionToTarget, turnSpeed * Time.fixedDeltaTime, 0f);
+
+            transform.rotation = Quaternion.LookRotation(newDirection);
+
+            rb.velocity = newDirection * speed;
         }
-
-        transform.position += transform.forward * speed * Time.deltaTime;
-
-        
-        Destroy(gameObject,lifetime);
-        
+        else
+        {
+            rb.velocity = forward * speed;
+        }
     }
 }

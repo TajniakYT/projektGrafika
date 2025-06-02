@@ -77,7 +77,7 @@ public class HeliShoot : MonoBehaviour
         }
     }
 
-    Vector3? GetMouseWorldPosition()
+    public Vector3? GetMouseWorldPosition()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero); // Change if not using y=0 as ground

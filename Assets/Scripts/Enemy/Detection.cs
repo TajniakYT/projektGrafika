@@ -24,7 +24,6 @@ public class Detection : MonoBehaviour
     private Transform player;
     private float shootingDistance;
 
-    private IAttackable attackable;
     private ObjectProperties objectProperties;
 
     public DetectionState GetCurrentState()
@@ -47,11 +46,7 @@ public class Detection : MonoBehaviour
             Debug.LogError("ObjectProperties script not found!");
         }
 
-        attackable = GetComponent<IAttackable>();
-        if (attackable == null)
-        {
-            Debug.LogWarning("IAttackable not implemented on this enemy!");
-        }
+        
     }
 
     private void Update()
@@ -85,11 +80,7 @@ public class Detection : MonoBehaviour
                 if (distanceToPlayer > shootingDistance)
                 {
                     currentState = DetectionState.Following;
-                }
-                else
-                {
-                    attackable?.Attack();
-                }
+                }                
                 break;
         }
     }

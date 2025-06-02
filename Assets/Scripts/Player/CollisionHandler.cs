@@ -55,11 +55,7 @@ public class CollisionHandler : MonoBehaviour
         if (collision.gameObject.TryGetComponent<BulletProperties>(out var bullet))
         {
             damage = bullet.damage;
-        }
-        else if (collision.gameObject.TryGetComponent<HomingMissileScript>(out var missile))
-        {
-            damage = missile.damage;
-        }
+        }        
         else
         {
             Debug.LogWarning("No damage component found on: " + collision.gameObject.name);

@@ -4,29 +4,40 @@ using UnityEngine;
 
 public class RocketAmmunition : MonoBehaviour, IBulletBehavior
 {
+
     public void Shoot(Vector3 targetPosition, Transform firePoint, GameObject bulletPrefab)
     {
-        //default shoot
-        Vector3 spawnPosition = firePoint.position;
-        Vector3 direction = (targetPosition - spawnPosition).normalized;
+        // Find all enemies in the scene
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject closestEnemy = null;
+        float closestDistance = Mathf.Infinity;
 
-        GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.LookRotation(direction));
-
-        BulletProperties bp = bullet.GetComponent<BulletProperties>();
-        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-
-        if (bulletRb != null)
+        // Loop through each enemy and find the closest to the target position
+        foreach (GameObject enemy in enemies)
         {
-           // HelicopterController helicopterProperties = heli.GetComponent<HelicopterController>();
-            bulletRb.velocity = direction * bp.speed;//+ helicopterProperties.getSpeed();
+            float distance = Vector3.Distance(targetPosition, enemy.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestEnemy = enemy;
+            }
         }
+       // Debug.LogError("found enemy." + closestEnemy.name);
+        // Determine direction from fire point to target position
+        Vector3 direction = (targetPosition - firePoint.position).normalized;
 
-        Destroy(bullet, bp.lifetime);
-
-
-        //targeting
-
-
-
+        // Instantiate the missile
+        GameObject missile = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(direction));
+      
+        // Assign closest enemy to the missile script
+        HomingMissileScript missileScript = missile.GetComponent<HomingMissileScript>();
+        if (missileScript != null)
+        {
+            missileScript.target = closestEnemy.transform;
+        }
+        Destroy(missile, missile.GetComponent<BulletProperties>().lifetime);
+       
     }
+
+
 }
