@@ -13,11 +13,11 @@ public class EnemyFollow : MonoBehaviour
     {
         speed = GetComponent<ObjectProperties>().movementSpeed;
     }
-    void Update()
+    void FixedUpdate()
     {
         if (Target == null) return;
         var state = GetComponent<Detection>().GetCurrentState();
-
+        if (state == DetectionState.Waiting || state== DetectionState.Searching) return;
         moveSpeed = (state == DetectionState.Following) ? speed : 0f;
 
 
