@@ -17,6 +17,13 @@ public class HeliShoot : MonoBehaviour
     private float bulletSpeed;
     private float bulletLifetime;
     private Vector3 lastHeliPosition;
+
+    //tell weaponswtich that we shot
+    public delegate void OnShootAction();
+    public event OnShootAction OnShoot;
+    //check if we have ammo
+    public System.Func<bool> CanShootCallback;
+
     void Awake()
     {
         lastHeliPosition = heli.transform.position;
@@ -92,11 +99,17 @@ public class HeliShoot : MonoBehaviour
 
     void Shoot(Vector3 targetPosition)
     {
+        if (CanShootCallback != null && !CanShootCallback.Invoke())
+        {
+            Debug.Log("Cannot shoot: Out of ammo");
+            return;
+        }
         IBulletBehavior bulletBehavior = bulletPrefab.GetComponent<IBulletBehavior>();
         if (bulletBehavior != null)
         {
             bulletBehavior.Shoot(targetPosition, firePoint, bulletPrefab);
         }
 
+        OnShoot?.Invoke();
     }
 }

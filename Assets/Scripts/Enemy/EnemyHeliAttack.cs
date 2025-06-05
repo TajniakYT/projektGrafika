@@ -33,7 +33,7 @@ public class EnemyHeliAttack : MonoBehaviour
     {
         counter++;
         if (counter >= 45) {oscilator *= -1;counter = 0; }
-        float radius = objectProperties.shootingDistance-0.1f;
+        float radius = objectProperties.shootingDistance-0.2f;
 
 
         // Direction from player to this enemy (flattened)
