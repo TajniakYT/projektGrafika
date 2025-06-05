@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System;
+using TMPro;
 
 public enum WeaponTypes
 {
@@ -13,17 +14,17 @@ public enum WeaponTypes
 public class WeaponSwitch : MonoBehaviour
 {
     ///starting ammo amounts
-    private List<int> ammunitionAmount; 
-    
+    private List<int> ammunitionAmount;
+    public TMP_Text ammunitionCounter;
     ///end of ammo amounts
-    
+
     public List<GameObject> bulletPrefabs;
     public List<Sprite> weaponIconSprites;
     public Image weaponIcon;
 
     public HeliShoot heliShoot;
     private int weaponId = 0;
-
+    private System.Globalization.NumberFormatInfo nfi = new System.Globalization.NumberFormatInfo();
 
     public int GetWeaponId()
     {
@@ -45,14 +46,15 @@ public class WeaponSwitch : MonoBehaviour
         100, 
         15
         };
-        
-        if (heliShoot == null)
-            Debug.LogError("HeliShoot not found!");
 
-        if(weaponIconSprites.Count!=bulletPrefabs.Count)
+        if (weaponIconSprites.Count != bulletPrefabs.Count)
             Debug.LogError("Different number of ammo prefabs and sprites!");
 
         weaponIcon.sprite = weaponIconSprites[weaponId];
+        ammunitionCounter.text = "" + ammunitionAmount[weaponId];
+        if (heliShoot == null)
+            Debug.LogError("HeliShoot not found!");
+
 
         heliShoot.OnShoot += HandleShoot;
         heliShoot.CanShootCallback = CanShoot;
@@ -68,6 +70,7 @@ public class WeaponSwitch : MonoBehaviour
         if (ammunitionAmount[weaponId] > 0)
         {
             ammunitionAmount[weaponId]--;
+            ammunitionCounter.text = "" + ammunitionAmount[weaponId];
             Debug.Log($"Ammo left for {(WeaponTypes)weaponId}: {ammunitionAmount[weaponId]}");
         }
        
@@ -91,7 +94,7 @@ public class WeaponSwitch : MonoBehaviour
         }
 
         weaponIcon.sprite = weaponIconSprites[weaponId];
-
+        ammunitionCounter.text = "" + ammunitionAmount[weaponId];
         heliShoot.SetBulletPrefab(bulletPrefabs[weaponId]);
 
         Debug.Log("Switched to weapon: " + (WeaponTypes)weaponId);
