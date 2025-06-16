@@ -16,4 +16,8 @@ public class ScoreCounter : MonoBehaviour
         score += amount;
         scoreText.text = "Score: " + score;
     }
+    public string GetScore()
+    {
+        return score.ToString();
+    }
 }

@@ -43,8 +43,9 @@ public class WeaponSwitch : MonoBehaviour
         heliShoot = GetComponent<HeliShoot>();
         
         ammunitionAmount = new List<int> {
-        100, 
-        15
+        // Czemu to nie jest publiczna metoda aby wybraæ ile jest amunicji? Serio?
+        9999999, 
+        9999999
         };
 
         if (weaponIconSprites.Count != bulletPrefabs.Count)

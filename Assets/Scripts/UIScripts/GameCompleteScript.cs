@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameCompleteScript : MonoBehaviour
 {
     public GameObject GameCompletePanel;
     public Button saveButton;
+    public TMP_Text scoreText;
+    public ScoreCounter scoreCounter;
 
     [Header("Audio")]
     public AudioSource audioSource;
@@ -23,6 +26,7 @@ public class GameCompleteScript : MonoBehaviour
     public void ShowGameCompletePanel()
     {
         GameCompletePanel.SetActive(true);
+        scoreText.text = $"Score: {scoreCounter.GetScore()}";
         Time.timeScale = 0f;
     }
 
