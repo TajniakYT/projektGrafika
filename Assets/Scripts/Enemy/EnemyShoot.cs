@@ -102,19 +102,10 @@ public class EnemyShoot : MonoBehaviour
 
     void Shoot()
     {
-        Vector3 spawnPosition = firePoint.position + firePoint.rotation * firePointOffset;
-        Quaternion spawnRotation = firePoint.rotation;
-
-        GameObject bullet = Instantiate(currentBullet.bulletPrefab, spawnPosition, spawnRotation);
-        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-
-        if (bulletRb != null)
+        IBulletBehavior bulletBehavior = currentBullet.bulletPrefab.GetComponent<IBulletBehavior>();
+        if (bulletBehavior != null)
         {
-            Vector3 direction = (Target.position - spawnPosition).normalized;
-            bulletRb.velocity = direction * bulletSpeed;
+            bulletBehavior.Shoot(Target.position, firePoint, currentBullet.bulletPrefab);
         }
-
-        Destroy(bullet, bulletLifetime);
-        bullet.transform.rotation = Quaternion.LookRotation((Target.position - spawnPosition).normalized);
     }
 }
